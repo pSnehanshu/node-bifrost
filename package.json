@@ -1,0 +1,33 @@
+{
+  "name": "bifrost",
+  "version": "1.0.0",
+  "description": "Access control for node.js, as simple as that",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pSnehanshu/bifrost.git"
+  },
+  "keywords": [
+    "access",
+    "control",
+    "list",
+    "acl",
+    "permission",
+    "Bifröst",
+    "bifrost",
+    "thor",
+    "asgard",
+    "odin",
+    "loki",
+    "Heimdall"
+  ],
+  "author": "Snehanshu Phukon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pSnehanshu/bifrost/issues"
+  },
+  "homepage": "https://github.com/pSnehanshu/bifrost#readme"
+}
