@@ -1,5 +1,5 @@
-# Bifröst
-Access control for node.js, as simple as that
+# node-bifrost
+Bifröst, Access control for node.js, as simple as that
 
 
 ![Bifröst](assets/thor-bifrost-asgard.jpg)
@@ -9,15 +9,13 @@ Bifröst is similar to `optimalbits/node_acl` except that it has a concept of [*
 
 ## Installation
 
-```
-$ npm install git+https://git@github.com/pSnehanshu/bifrost.git
-```
+[![NPM](https://nodei.co/npm/node-bifrost.png?compact=true)](https://nodei.co/npm/node-bifrost/)
 
 ## Usage
 Import the library to your project and create an instance
 
 ```javascript
-const Bifrost = require('bifrost');
+const Bifrost = require('node-bifrost');
 const bifrost = new Bifrost();
 ```
 
