@@ -67,3 +67,22 @@ bifrost.allowed('alfred', 'issues', 'create'); // false
 ```
 
 **Note:** Every action on every resource is denied to every user unless explicitly allowed.
+
+## Concept of scope
+
+In some applications, especially SaaS, there is a need to implement a [multi-tenancy architecture](https://whatis.techtarget.com/definition/multi-tenancy). In those apps, a user should not be able access resources belonging to other tenants.
+
+For example, assume we have a library management system as a SaaS offering. There will be multiple libraries, and every library will have its own set of users, even though the roles are same across schools (i.e. Librarian, Accountant, Member etc.). We wouldn't want, for example, the librarian of Library A to have librarian privileges at Library B.
+
+Here comes in **Scope**. When assigning role using `bifrost.assign`, you can pass a third argument called `scope`. e.g.
+
+```javascript
+bifrost.assign('john', 'librarian', 'library-a');
+```
+
+Now, `john` is declared as a `librarian` of only the `library-a` scope. When checking for permission using `bifrost.allowed`, you can pass a fourth argument called `scope`. e.g.
+
+```javascript
+bifrost.allowed('john', 'books', 'create', 'library-a'); // true
+bifrost.allowed('john', 'books', 'create', 'library-b'); // false
+```
