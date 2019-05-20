@@ -15,9 +15,10 @@ Bifröst is similar to `optimalbits/node_acl` except that it has a concept of [*
 Import the library to your project and create an instance
 
 ```javascript
-const Bifrost = require('node-bifrost');
-const bifrost = new Bifrost();
+const bifrost = require('node-bifrost');
 ```
+
+**Note:** To create a new instance of bifrost, do this `const bifrost2 = new require('node-bifrost').constructor;`
 
 ### Define ACL
 ```javascript
