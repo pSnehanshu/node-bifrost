@@ -1,6 +1,6 @@
 {
   "name": "node-bifrost",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Access control for node.js, as simple as that",
   "main": "./lib/index.js",
   "scripts": {

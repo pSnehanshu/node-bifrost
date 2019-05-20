@@ -4,8 +4,7 @@ Bifröst, Access control for node.js, as simple as that
 
 ![Bifröst](assets/thor-bifrost-asgard.jpg)
 
-Yet another ACL library for node.js inspired by [optimalbits/node_acl](https://github.com/optimalbits/node_acl)
-Bifröst is similar to `optimalbits/node_acl` except that it has a concept of [**scope**](#concept-of-scope).
+Yet another ACL library for node.js inspired by [optimalbits/node_acl](https://github.com/optimalbits/node_acl) except that bifrost has the concept of [**scope**](#concept-of-scope).
 
 ## Installation
 
