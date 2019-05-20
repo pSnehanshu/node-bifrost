@@ -48,22 +48,22 @@ Assume that we have three users, `john`, `rajesh` and `alfred`.
 We can implement this as follows:
 
 ```javascript
-bifrost.assignRole('john', 'librarian');
-bifrost.assignRole('rajesh', 'member');
-bifrost.assignRole('alfred', 'librarian');
-bifrost.assignRole('alfred', 'member');
+bifrost.assign('john', 'librarian');
+bifrost.assign('rajesh', 'member');
+bifrost.assign('alfred', 'librarian');
+bifrost.assign('alfred', 'member');
 ```
 ### Finally, check for permission
 ```javascript
-bifrost.isAllowed('john', 'books', 'create'); // true
-bifrost.isAllowed('john', 'reviews', 'update'); // false
+bifrost.allowed('john', 'books', 'create'); // true
+bifrost.allowed('john', 'reviews', 'update'); // false
 
-bifrost.isAllowed('rajesh', 'books', 'delete'); // false
-bifrost.isAllowed('rajesh', 'reviews', 'read'); // true
+bifrost.allowed('rajesh', 'books', 'delete'); // false
+bifrost.allowed('rajesh', 'reviews', 'read'); // true
 
-bifrost.isAllowed('alfred', 'books', 'update'); // true
-bifrost.isAllowed('alfred', 'reviews', 'create'); // true
-bifrost.isAllowed('alfred', 'issues', 'create'); // false
+bifrost.allowed('alfred', 'books', 'update'); // true
+bifrost.allowed('alfred', 'reviews', 'create'); // true
+bifrost.allowed('alfred', 'issues', 'create'); // false
 ```
 
 **Note:** Every action on every resource is denied to every user unless explicitly allowed.
