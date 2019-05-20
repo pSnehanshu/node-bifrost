@@ -1,6 +1,6 @@
 {
   "name": "node-bifrost",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Access control for node.js, as simple as that",
   "main": "./lib/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pSnehanshu/bifrost.git"
+    "url": "git+https://github.com/pSnehanshu/node-bifrost.git"
   },
   "keywords": [
     "access",
@@ -18,6 +18,7 @@
     "permission",
     "Bifröst",
     "bifrost",
+    "node-bifrost",
     "thor",
     "asgard",
     "odin",
@@ -27,7 +28,7 @@
   "author": "Snehanshu Phukon",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pSnehanshu/bifrost/issues"
+    "url": "https://github.com/pSnehanshu/node-bifrost/issues"
   },
-  "homepage": "https://github.com/pSnehanshu/bifrost#readme"
+  "homepage": "https://www.npmjs.com/package/node-bifrost"
 }
