@@ -1,6 +1,7 @@
 # node-bifrost
-Bifröst, Access control for node.js, as simple as that
+Bifröst, Access control for node.js, as simple as that.
 
+**Note:** Works with MongoDB only (more databases coming, you're welcome to contribute)
 
 ![Bifröst](assets/thor-bifrost-asgard.jpg)
 
@@ -14,10 +15,16 @@ Yet another ACL library for node.js inspired by [optimalbits/node_acl](https://g
 Import the library to your project and create an instance
 
 ```javascript
-const bifrost = require('node-bifrost');
+const Bifrost = require('node-bifrost');
+const bifrost = new Bifrost('mongodb://localhost:27017/mydb', {
+    cb() {
+        // rest of the database dependent code goes here
+    },
+    err_cb(err) {
+        // In case error occurs
+    },
+});
 ```
-
-**Note:** To create a new instance of bifrost, do this `const bifrost2 = new require('node-bifrost').constructor;`
 
 ### Define ACL
 ```javascript
@@ -46,22 +53,29 @@ Assume that we have three users, `john`, `rajesh` and `alfred`.
 We can implement this as follows:
 
 ```javascript
-bifrost.assign('john', 'librarian');
-bifrost.assign('rajesh', 'member');
-bifrost.assign('alfred', 'librarian');
-bifrost.assign('alfred', 'member');
+await bifrost.assign('john', 'librarian');
+await bifrost.assign('rajesh', 'member');
+await bifrost.assign('alfred', 'librarian');
+await bifrost.assign('alfred', 'member');
+
+// We're using `await` keyword because `bifrost.assign` returns a Promise.
+// Don't forget to wrap this code inside an async function
 ```
+
 ### Finally, check for permission
 ```javascript
-bifrost.allowed('john', 'books', 'create'); // true
-bifrost.allowed('john', 'reviews', 'update'); // false
+await bifrost.allowed('john', 'books', 'create'); // true
+await bifrost.allowed('john', 'reviews', 'update'); // false
 
-bifrost.allowed('rajesh', 'books', 'delete'); // false
-bifrost.allowed('rajesh', 'reviews', 'read'); // true
+await bifrost.allowed('rajesh', 'books', 'delete'); // false
+await bifrost.allowed('rajesh', 'reviews', 'read'); // true
 
-bifrost.allowed('alfred', 'books', 'update'); // true
-bifrost.allowed('alfred', 'reviews', 'create'); // true
-bifrost.allowed('alfred', 'issues', 'create'); // false
+await bifrost.allowed('alfred', 'books', 'update'); // true
+await bifrost.allowed('alfred', 'reviews', 'create'); // true
+await bifrost.allowed('alfred', 'issues', 'create'); // false
+
+// We're using `await` keyword because `bifrost.allowed` returns a Promise.
+// Don't forget to wrap this code inside an async function
 ```
 
 **Note:** Every action on every resource is denied to every user unless explicitly allowed.
@@ -81,6 +95,9 @@ bifrost.assign('john', 'librarian', 'library-a');
 Now, `john` is declared as a `librarian` of only the `library-a` scope. When checking for permission using `bifrost.allowed`, you can pass a fourth argument called `scope`. e.g.
 
 ```javascript
-bifrost.allowed('john', 'books', 'create', 'library-a'); // true
-bifrost.allowed('john', 'books', 'create', 'library-b'); // false
+await bifrost.allowed('john', 'books', 'create', 'library-a'); // true
+await bifrost.allowed('john', 'books', 'create', 'library-b'); // false
+
+// We're using `await` keyword because `bifrost.allowed` returns a Promise.
+// Don't forget to wrap this code inside an async function
 ```
