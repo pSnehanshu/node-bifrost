@@ -32,11 +32,12 @@ bifrost.allow('librarian', 'books', 'create');
 bifrost.allow('librarian', 'books', 'read');
 bifrost.allow('librarian', 'books', 'update');
 bifrost.allow('librarian', 'books', 'delete');
+// ------------- OR -------------------------
+bifrost.allow('librarian', 'books', ['create', 'read', 'update', 'delete']);
+
 
 bifrost.allow('member', 'books', 'read');
-bifrost.allow('member', 'reviews', 'create');
-bifrost.allow('member', 'reviews', 'read');
-bifrost.allow('member', 'reviews', 'update');
+bifrost.allow('member', 'reviews', ['create', 'read', 'update']);
 ```
 Here we allowed the `librarian` role to `create`, `read`, `update` and `delete` the `books` resource.
 
