@@ -80,6 +80,14 @@ await bifrost.allowed('alfred', 'issues', 'create'); // false
 
 **Note:** Every action on every resource is denied to every user unless explicitly allowed.
 
+### Wildcard support
+You can use `*` to give wildcard permission. for example,
+```javascript
+bifrost.allow('accountant', 'fees', '*'); // Gives accountant the permission to all actions for fees resource.
+bifrost.allow('vice-principal', '*', 'update'); // Gives vice-principal the delete permission for all resources
+bifrost.allow('principal', '*', '*'); // Gives principal all permissions for all resources.
+```
+
 ## Concept of scope
 
 In some applications, especially SaaS, there is a need to implement a [multi-tenancy architecture](https://whatis.techtarget.com/definition/multi-tenancy). In those apps, a user should not be able access resources belonging to other tenants.
