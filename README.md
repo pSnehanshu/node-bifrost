@@ -1,11 +1,9 @@
 # node-bifrost
-Bifröst, Access control for node.js, as simple as that.
-
-**Note:** Works with MongoDB only (more databases coming, you're welcome to contribute)
+Bifröst, Access control for node.js, as simple as that. Suited for building SaaS apps due to the concept of [scope](#concept-of-scope).
 
 ![Bifröst](assets/thor-bifrost-asgard.jpg)
 
-Yet another ACL library for node.js inspired by [optimalbits/node_acl](https://github.com/optimalbits/node_acl) except that bifrost has the concept of [scope](#concept-of-scope).
+**Note:** Works with MongoDB only (more databases coming, you're welcome to contribute)
 
 ## Installation
 
