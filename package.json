@@ -1,7 +1,7 @@
 {
   "name": "node-bifrost",
   "version": "1.1.2",
-  "description": "Access control for node.js, as simple as that",
+  "description": "Access control for node.js, suited for building SaaS apps",
   "main": "./lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
