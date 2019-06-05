@@ -131,3 +131,5 @@ await bifrost.allowed('aurangzeb', 'finance', 'update', 'maratha-kingdom'); // t
 // Aurangzeb isn't allowed to perfrom the action on ahom kingdom because its not a child scope of mughal empire
 await bifrost.allowed('aurangzeb', 'finance', 'update', 'ahom-kingdom'); // false
 ```
+
+**Note:** The hierarchy is a transitive relation. i.e. If A is a parent of B, and B is a parent of C, then A is also parent of C.
