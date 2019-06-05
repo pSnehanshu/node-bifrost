@@ -5,7 +5,7 @@ Bifröst, Access control for node.js, as simple as that.
 
 ![Bifröst](assets/thor-bifrost-asgard.jpg)
 
-Yet another ACL library for node.js inspired by [optimalbits/node_acl](https://github.com/optimalbits/node_acl) except that bifrost has the concept of [**scope**](#concept-of-scope).
+Yet another ACL library for node.js inspired by [optimalbits/node_acl](https://github.com/optimalbits/node_acl) except that bifrost has the concept of [scope](#concept-of-scope).
 
 ## Installation
 
@@ -109,4 +109,25 @@ await bifrost.allowed('john', 'books', 'create', 'library-b'); // false
 
 // We're using `await` keyword because `bifrost.allowed` returns a Promise.
 // Don't forget to wrap this code inside an async function
+```
+
+### Scope hierarchy
+Sometimes there is a need to implement hierarchy for scopes. For example, lets say there are several kingdoms under an empire. Then the emperor of the empire should have access over the kindgoms but not the other way around i.e. the kings of the kingdoms shouldn't have power over the empire.
+
+```javascript
+bifrost.allow('emperor', '*', '*'); // Emperor can do everything
+bifrost.allow('king', 'subjects', '*'); // Kings can do everything to his subjects
+
+await bifrost.assign('aurangzeb', 'emperor', 'mughal-empire'); // aurangzeb has been assigned as the emperor of the Mughal Empire
+await bifrost.assign('shivaji', 'king', 'maratha-kingdom'); // shivaji has been assigned as the king of the Maratha Kingdom
+await bifrost.assign('godapani', 'king', 'ahom-kingdom'); // godapani has been assigned as the king of the Ahom Kingdom
+
+// Assign the mughal kingdom as the parent scope of the maratha kingdom
+bifrost.addParentScope('maratha-kingdom', 'mughal-empire');
+
+// Aurangzeb is allowed to perfrom the action on maratha kingdom because its a child scope of mughal empire
+await bifrost.allowed('aurangzeb', 'finance', 'update', 'maratha-kingdom'); // true
+
+// Aurangzeb isn't allowed to perfrom the action on ahom kingdom because its not a child scope of mughal empire
+await bifrost.allowed('aurangzeb', 'finance', 'update', 'ahom-kingdom'); // false
 ```
