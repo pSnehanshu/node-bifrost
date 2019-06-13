@@ -121,7 +121,7 @@ await bifrost.assign('shivaji', 'king', 'maratha-kingdom'); // shivaji has been 
 await bifrost.assign('godapani', 'king', 'ahom-kingdom'); // godapani has been assigned as the king of the Ahom Kingdom
 
 // Assign the mughal kingdom as the parent scope of the maratha kingdom
-bifrost.addParentScope('maratha-kingdom', 'mughal-empire');
+await bifrost.addParentScope('maratha-kingdom', 'mughal-empire');
 
 // Aurangzeb is allowed to perfrom the action on maratha kingdom because its a child scope of mughal empire
 await bifrost.allowed('aurangzeb', 'finance', 'update', 'maratha-kingdom'); // true
