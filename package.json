@@ -34,5 +34,9 @@
   "homepage": "https://www.npmjs.com/package/node-bifrost",
   "dependencies": {
     "mongodb": "^3.2.5"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
   }
 }
