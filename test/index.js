@@ -146,7 +146,23 @@ describe('bifrost', function () {
             assert.isFalse(result2);
         });
 
-        
+        describe('Scope hierarchy', function () {
+            it('should successfully add a parent scope', async function () {
+                await bifrost.addParentScope(scope, scope2);
+                var result = await bifrost.getParentScopes(scope);
+                assert.isTrue(result.includes(scope2));
+            });
+
+            it('should allow user of the parent scope to access resources of child scope', async function () {
+                var result = await bifrost.allowed(user2, resource, action, scope);
+                assert.isTrue(result);
+            });
+
+            it('should not allow user of the child scope to access resources of parent scope', async function () {
+                var result = await bifrost.allowed(user, resource, action, scope2);
+                assert.isFalse(result);
+            });
+        });
     });
 });
 
