@@ -4,7 +4,7 @@
   "description": "Access control for node.js, suited for building SaaS apps",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha || true"
   },
   "repository": {
     "type": "git",
