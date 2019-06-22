@@ -6,13 +6,13 @@ const connected = bifrost.connect();
 
 describe('bifrost', function () {
     describe('Without scope', function () {
-        var role = 'librarian';
-        var resource = 'books';
-        var resource2 = 'benches';
-        var action = 'edit';
-        var action2 = 'delete';
-        var user = 'user1';
-        var user2 = 'user_xyz';
+        var role = random();
+        var resource = random();
+        var resource2 = random();
+        var action = random();
+        var action2 = random();
+        var user = random();
+        var user2 = random();
 
         it('should successfully add role permission', async function () {
             bifrost.allow(role, resource, action);
@@ -61,17 +61,15 @@ describe('bifrost', function () {
     });
 
     describe('With scope', function () {
-        var role = 'accountant';
-        var resource = 'invoice';
-        var resource2 = 'marks';
-        var action = 'create';
-        var action2 = 'read';
-        var user = 'acc1';
-        var user2 = 'acc2';
-        var scope = 'jnv';
-        var scope2 = 'kv';
-        var parentScope = 'nvs';
-        var parentScope2 = 'kvs';
+        var role = random();
+        var resource = random();
+        var resource2 = random();
+        var action = random();
+        var action2 = random();
+        var user = random();
+        var user2 = random();
+        var scope = random();
+        var scope2 = random();
 
         it('should successfully add role permission', async function () {
             bifrost.allow(role, resource, action);
@@ -127,7 +125,7 @@ describe('bifrost', function () {
         it('should not allow the user to perform other actions on the resource', async function () {
             var result = await bifrost.allowed(user, resource, action2, scope);
             var result2 = await bifrost.allowed(user2, resource, action2, scope2);
-            
+
             assert.isFalse(result);
             assert.isFalse(result2);
         });
@@ -151,3 +149,8 @@ describe('bifrost', function () {
         
     });
 });
+
+
+function random() {
+    return (Math.random() + Math.random()).toString();
+}
